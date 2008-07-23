@@ -23,3 +23,10 @@ album
    a. fields for name, email, and password are present
    b. passwords can be changed from this screen
 
+
+Plugins Used:
+  rcov
+  restful_authentication
+
+Gems
+  postgres
