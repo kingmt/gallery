@@ -27,6 +27,7 @@ album
 Plugins Used:
   rcov
   restful_authentication
+  shoulda
 
 Gems
   postgres
