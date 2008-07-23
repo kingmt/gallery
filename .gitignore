@@ -1,0 +1,8 @@
+database.yml
+db/schema.rb
+log
+tmp
+nbproject/*
+data
+coverage
+
