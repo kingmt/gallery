@@ -1,24 +1,24 @@
 # be DRY
 mysql_defaults: &mysql_defaults
   adapter: mysql
-  username: tribal 
-  password: tribal
+  username: gallery 
+  password: gallery
   # Ubuntu socket
-   socket: /var/run/mysqld/mysqld.sock
+  socket: /var/run/mysqld/mysqld.sock
   # OS X(?) socket
   # socket: /tmp/mysql.sock
 
 development:
   <<: *mysql_defaults
-  database: tribal_rev
+  database: gallery
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *mysql_defaults
-  database: tribal_rev_test
+  database: gallery_test
 
 production:
   <<: *mysql_defaults
-  database: tribal_rev
+  database: gallery
