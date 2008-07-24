@@ -27,6 +27,19 @@ class User < ActiveRecord::Base
     u && u.authenticated?(password) ? u : nil
   end
 
+  def initialize(args)
+    super args
+    self.role = 'user'
+  end
+  
+  def is_admin?
+    role == 'admin'
+  end
+  
+  def add_admin_role
+    self.role = 'admin'
+  end
+  
   protected
     
 

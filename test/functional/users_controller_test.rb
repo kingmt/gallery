@@ -24,14 +24,6 @@ class UsersControllerTest < Test::Unit::TestCase
     end
   end
 
-  def test_should_require_login_on_signup
-    assert_no_difference 'User.count' do
-      create_user(:login => nil)
-      assert assigns(:user).errors.on(:login)
-      assert_response :success
-    end
-  end
-
   def test_should_require_password_on_signup
     assert_no_difference 'User.count' do
       create_user(:password => nil)
@@ -61,7 +53,7 @@ class UsersControllerTest < Test::Unit::TestCase
 
   protected
     def create_user(options = {})
-      post :create, :user => { :login => 'quire', :email => 'quire@example.com',
+      post :create, :user => { :email => 'quire@example.com',
         :password => 'quire69', :password_confirmation => 'quire69' }.merge(options)
     end
 end
