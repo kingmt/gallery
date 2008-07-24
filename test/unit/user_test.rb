@@ -5,6 +5,8 @@ class UserTest < Test::Unit::TestCase
   # Then, you can remove it from this and the functional test.
   include AuthenticatedTestHelper
   fixtures :users
+  
+  should_have_many :album
 
   def test_should_create_user
     assert_difference 'User.count' do
