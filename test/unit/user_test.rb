@@ -86,6 +86,18 @@ class UserTest < Test::Unit::TestCase
     assert_not_nil users(:quentin).remember_token_expires_at
     assert users(:quentin).remember_token_expires_at.between?(before, after)
   end
+  
+  should 'return correct status of admin' do
+    assert !users(:quentin).is_admin?
+    assert users(:aaron).is_admin?
+  end
+  
+  should 'upgrade user to have admin role' do
+    quentin = users :quentin
+    assert !quentin.is_admin?
+    quentin.add_admin_role
+    assert quentin.is_admin?
+  end
 
 protected
   def create_user(options = {})
