@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  #before_filter :admin_only
+  before_filter :admin_only
 
   def index
     @users = User.all
@@ -26,14 +26,13 @@ class UsersController < ApplicationController
   end
  
   def create
-    logout_keeping_session!
+    #logout_keeping_session!
     @user = User.new(params[:user])
     success = @user && @user.save
     if success && @user.errors.empty?
       # Protects against session fixation attacks, causes request forgery
       # protection if visitor resubmits an earlier form using back
       # button. Uncomment if you understand the tradeoffs.
-      # reset session
       redirect_to(users_url) 
       flash[:notice] = "New user successfully created."
     else
@@ -53,6 +52,14 @@ class UsersController < ApplicationController
   
   private
   def admin_only
-    logged_in? && current_user.is_admin?
+    unless logged_in? && current_user.is_admin?
+      if logged_in?
+        # not an admin
+        flash[:notice] = 'Access Denied'
+      else
+        flash[:notice] = 'Please log in.'
+      end
+      redirect_to '/'
+    end
   end
 end
