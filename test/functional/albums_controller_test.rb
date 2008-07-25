@@ -1,6 +1,16 @@
-require 'test_helper'
+require File.dirname(__FILE__) + '/../test_helper'
 
 class AlbumsControllerTest < ActionController::TestCase
+  
+  def setup
+    @album = Album.first
+  end
+  
+  should_be_restful do |resource|
+    resource.formats = [:html]
+    
+  end
+  
   def test_should_get_index
     get :index
     assert_response :success
