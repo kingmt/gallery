@@ -1,8 +1,14 @@
 <h1>Listing albums</h1>
 
+
+<% if logged_in? && session[:all] == true %>
+  <p><%= link_to 'show only my albums', albums_path(:all => 'false') %></p>
+<% else %>
+  <p><%= link_to 'show all albums', albums_path %></p>
+<% end %>
+  
+
 <table>
-
-
 <% for album in @albums %>
   <tr>
     <td><%= link_to album.name, album_pictures_path(album) %></td>
@@ -17,4 +23,7 @@
 
 <% if logged_in? %>
   <%= link_to 'New album', new_album_path %>
+  <% if current_user.is_admin? %>
+    | <%= link_to 'User management', users_path %>
+  <% end %>
 <% end %>
