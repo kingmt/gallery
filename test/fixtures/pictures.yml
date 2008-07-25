@@ -1,16 +1,16 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  path: MyString
+  filename: MyString
   description: one
   album: one
 
 two:
-  path: MyString
+  filename: MyString
   description: two
   album: one
 
 three: 
-  path: path
+  filename: path
   description: three
   album: two
