@@ -1,0 +1,18 @@
+<p>
+  <b>Path:</b>
+  <%=h @picture.path %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @picture.description %>
+</p>
+
+<p>
+  <b>Album:</b>
+  <%=h @picture.album_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<%= link_to 'Back', pictures_path %>

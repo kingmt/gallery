@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  path: MyString
+  description: MyText
+  album_id: 1
+
+two:
+  path: MyString
+  description: MyText
+  album_id: 1
