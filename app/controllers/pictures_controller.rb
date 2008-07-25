@@ -31,7 +31,7 @@ class PicturesController < ApplicationController
 
     if @picture.save
       flash[:notice] = 'Picture was successfully created.'
-      redirect_to(@picture)
+      redirect_to(album_pictures_path(@album))
     else
       render :action => "new" 
     end
@@ -44,7 +44,7 @@ class PicturesController < ApplicationController
     
     if @picture.update_attributes(params[:picture])
       flash[:notice] = 'Picture was successfully updated.'
-      redirect_to(@picture)
+      redirect_to(album_pictures_path(@album))
     else
       render :action => "edit" 
     end
@@ -55,8 +55,8 @@ class PicturesController < ApplicationController
   def destroy
     @picture = @album.pictures.find(params[:id])
     @picture.destroy
-
-    redirect_to(album_pictures_url(@album)) 
+    flash[:notice] = 'Picture was successfully removed.'
+    redirect_to(album_pictures_path(@album)) 
   end
   
   private
