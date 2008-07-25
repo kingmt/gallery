@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
     u && u.authenticated?(password) ? u : nil
   end
 
-  def initialize(args)
+  def initialize(args=nil)
     super args
     self.role = 'user'
   end
