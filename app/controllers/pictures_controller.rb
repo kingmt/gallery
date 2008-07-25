@@ -63,6 +63,8 @@ class PicturesController < ApplicationController
   
   def owner?
     get_album
-    logged_in? && current_user && current_user.id == @album.user.id
+    logged_in? && 
+      current_user && 
+      current_user.id == @album.user.id
   end
 end

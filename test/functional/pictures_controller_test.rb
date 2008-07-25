@@ -7,12 +7,24 @@ class PicturesControllerTest < ActionController::TestCase
     @picture = @album.pictures.first
   end
   
-  should_be_restful do |resource|
-    resource.parent  = [:album]
-    resource.formats = [:html]
-    resource.create.redirect  = "album_pictures_path(@album)"
-    resource.update.redirect  = "album_pictures_path(@album)"
+  context 'logged in' do
+    setup {login_as(:quentin)}
+    
+    should_be_restful do |resource|
+      resource.parent  = [:album]
+      resource.formats = [:html]
+      resource.create.flash  = /uploaded/i
+      resource.create.redirect  = "album_pictures_path(@album)"
+      resource.update.redirect  = "album_pictures_path(@album)"
+    end
+    
+    should 'zzz debug' do
+
+    end
+    
   end
+  
+  
   
 
 end
