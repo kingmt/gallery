@@ -9,6 +9,15 @@
 </head>
 <body>
 
+<% if logged_in? -%>
+  <span id="user-bar-greeting">Logged in as <%= current_user.email %></span>
+  <span id="user-bar-action"  >(<%= link_to "log out", logout_path, { :title => "Log out" }    %>)</span>
+<% else -%>
+  <span id="user-bar-greeting">Not logged in</span>
+  <span id="user-bar-action"  ><%= link_to "Log in",  login_path,  { :title => "Log in" } %></span>
+<% end -%>
+  <h1>Gallery</h1>
+<hr>
 <p style="color: green"><%= flash[:notice] %></p>
 
 <%= yield  %>
