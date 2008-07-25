@@ -24,6 +24,7 @@ class SessionsController < ApplicationController
       note_failed_signin
       @email       = params[:email]
       @remember_me = params[:remember_me]
+      flash[:notice] = "Please try again"
       render :action => 'new'
     end
   end
