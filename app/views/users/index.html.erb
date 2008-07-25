@@ -2,18 +2,24 @@
 
 <table>
   <tr>
+    <th>name</th>
     <th>email</th>
+    <th>admin?</th>
   </tr>
 
 <% for user in @users %>
   <tr>
+    <td><%=h user.name %></td>
     <td><%=h user.email %></td>
+    <td><%= user.is_admin? ? 'Y' : 'N' %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% unless current_user.id == user.id %>
+      <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'New User', new_user_path %> | <%= link_to 'Albums', albums_path %>
