@@ -12,13 +12,13 @@
     <td><%=h picture.path %></td>
     <td><%=h picture.description %></td>
     <td><%=h picture.album_id %></td>
-    <td><%= link_to 'Show', picture %></td>
-    <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-    <td><%= link_to 'Destroy', picture, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', album_picture_path(@album,picture) %></td>
+    <td><%= link_to 'Edit', edit_album_picture_path(@album,picture) %></td>
+    <td><%= link_to 'Destroy', album_picture_path(@album,picture), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New picture', new_picture_path %>
+<%= link_to 'New picture', new_album_picture_path(@album) %>

@@ -2,10 +2,15 @@
 
 one:
   path: MyString
-  description: MyText
-  album_id: 1
+  description: one
+  album: one
 
 two:
   path: MyString
-  description: MyText
-  album_id: 1
+  description: two
+  album: one
+
+three: 
+  path: path
+  description: three
+  album: two
