@@ -1,20 +1,20 @@
 <h1>Listing albums</h1>
 
 <table>
-  <tr>
-    <th>Name</th>
-  </tr>
+
 
 <% for album in @albums %>
   <tr>
-    <td><%=h album.name %></td>
-    <td><%= link_to 'Show', album_pictures_path(album) %></td>
-    <td><%= link_to 'Edit', edit_album_path(album) %></td>
-    <td><%= link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to album.name, album_pictures_path(album) %></td>
+    <% if logged_in? && current_user.id == album.user.id %>
+      <td><%= link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New album', new_album_path %>
+<% if logged_in? %>
+  <%= link_to 'New album', new_album_path %>
+<% end %>

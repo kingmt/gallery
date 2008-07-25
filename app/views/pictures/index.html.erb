@@ -5,26 +5,31 @@
   <tr>
     <td><%= link_to image_tag(picture.public_filename(:thumb)), picture.public_filename %></td>
     <td><%=h picture.description %></td>
+
+  <% if logged_in? && current_user.id == @album.user.id %>
     <td><%= link_to 'Edit', edit_album_picture_path(@album,picture) %></td>
     <td><%= link_to 'Destroy', album_picture_path(@album,picture), :confirm => 'Are you sure?', :method => :delete %></td>
+  <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<% form_for([@album, @picture], :html => { :multipart => true }) do |f| %>
-  <%= f.error_messages %>
+<% if logged_in? && current_user.id == @album.user.id %>
+  <% form_for([@album, @picture], :html => { :multipart => true }) do |f| %>
+    <%= f.error_messages %>
 
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description, :size => '60x5' %>
-  </p>
-  <p>
-    <label for="picture">Select A Picture:</label>
-    <%= f.file_field :uploaded_data %>
-  </p>
-  <p>
-    <%= f.submit "Upload Picture" %>
-  </p>
+    <p>
+      <%= f.label :description %><br />
+      <%= f.text_area :description, :size => '60x5' %>
+    </p>
+    <p>
+      <label for="picture">Select A Picture:</label>
+      <%= f.file_field :uploaded_data %>
+    </p>
+    <p>
+      <%= f.submit "Upload Picture" %>
+    </p>
+  <% end %>
 <% end %>
