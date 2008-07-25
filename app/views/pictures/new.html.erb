@@ -1,12 +1,13 @@
 <h1>New picture</h1>
 
-<% form_for([@album, @picture]) do |f| %>
+<% form_for([@album, @picture], :html => { :multipart => true }) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :path %><br />
-    <%= f.text_field :path %>
+    <label for="picture">Upload A Picture:</label>
+    <%= f.file_field :uploaded_data %>
   </p>
+
   <p>
     <%= f.label :description %><br />
     <%= f.text_area :description %>

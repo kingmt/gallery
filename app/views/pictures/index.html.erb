@@ -1,18 +1,15 @@
-<h1>Listing pictures</h1>
+<h1>Listing pictures in <%=h @album.name %> album</h1>
 
 <table>
   <tr>
     <th>Path</th>
     <th>Description</th>
-    <th>Album</th>
   </tr>
 
 <% for picture in @pictures %>
   <tr>
-    <td><%=h picture.path %></td>
+    <td><%= link_to image_tag(picture.public_filename(:thumb)), picture.public_filename %></td>
     <td><%=h picture.description %></td>
-    <td><%=h picture.album_id %></td>
-    <td><%= link_to 'Show', album_picture_path(@album,picture) %></td>
     <td><%= link_to 'Edit', edit_album_picture_path(@album,picture) %></td>
     <td><%= link_to 'Destroy', album_picture_path(@album,picture), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

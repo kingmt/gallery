@@ -1,16 +1,7 @@
-<p>
-  <b>Path:</b>
-  <%=h @picture.path %>
-</p>
-
+<%= image_tag @picture.public_filename %>
 <p>
   <b>Description:</b>
   <%=h @picture.description %>
-</p>
-
-<p>
-  <b>Album:</b>
-  <%=h @picture.album_id %>
 </p>
 
 

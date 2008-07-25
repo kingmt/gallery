@@ -3,14 +3,13 @@
 <% form_for([@album, @picture]) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :path %><br />
-    <%= f.text_field :path %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
+  <table>
+  <tr>
+    <td><%= image_tag @picture.public_filename %></td>
+    <td><%= f.label :description %><br />
+    <%= f.text_area :description %></td>
+  </tr>
+  </table>
   <p>
     <%= f.submit "Update" %>
   </p>
