@@ -6,7 +6,8 @@ class Picture < ActiveRecord::Base
                  :resize_to => '640x400',
                  :max_size => 1.megabyte,
                  :thumbnails => {:thumb => '100x100', :geometry => 'x50'}
-               
-  validates_as_attachment
+    
+  validates_presence_of :filename
+  #validates_as_attachment
 
 end
