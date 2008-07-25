@@ -1,6 +1,7 @@
 class PicturesController < ApplicationController
   
-  before_filter :get_album
+  before_filter :logged_in?, :owner?, :except => [:index]
+  before_filter :get_album, :only => [:index]
   # GET /pictures
   # GET /pictures.xml
   def index
@@ -14,12 +15,6 @@ class PicturesController < ApplicationController
     @picture = @album.pictures.find(params[:id])
   end
 
-  # GET /pictures/new
-  # GET /pictures/new.xml
-  def new
-    @picture = @album.pictures.build
-  end
-
   # GET /pictures/1/edit
   def edit
     @picture = @album.pictures.find(params[:id])
@@ -31,10 +26,11 @@ class PicturesController < ApplicationController
     @picture = @album.pictures.build(params[:picture])
 
     if @picture.save
-      flash[:notice] = 'Picture was successfully created.'
+      flash[:notice] = 'Picture was successfully uploaded.'
       redirect_to(album_pictures_path(@album))
     else
-      render :action => "new" 
+      @pictures = @album.pictures.all 
+      render :action => "index" 
     end
   end
 
@@ -63,5 +59,10 @@ class PicturesController < ApplicationController
   private
   def get_album
     @album = Album.find(params[:album_id])
+  end
+  
+  def owner?
+    get_album
+    logged_in? && current_user && current_user.id == @album.user.id
   end
 end
