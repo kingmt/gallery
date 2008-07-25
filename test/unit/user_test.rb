@@ -6,7 +6,7 @@ class UserTest < Test::Unit::TestCase
   include AuthenticatedTestHelper
   fixtures :users
   
-  should_have_many :album
+  should_have_many :albums
 
   def test_should_create_user
     assert_difference 'User.count' do
