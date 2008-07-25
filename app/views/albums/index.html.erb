@@ -8,7 +8,7 @@
 <% for album in @albums %>
   <tr>
     <td><%=h album.name %></td>
-    <td><%= link_to 'Show', album %></td>
+    <td><%= link_to 'Show', album_pictures_path(album) %></td>
     <td><%= link_to 'Edit', edit_album_path(album) %></td>
     <td><%= link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

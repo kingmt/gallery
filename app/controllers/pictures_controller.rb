@@ -5,6 +5,7 @@ class PicturesController < ApplicationController
   # GET /pictures.xml
   def index
     @pictures = @album.pictures.all 
+    @picture = @album.pictures.build
   end
 
   # GET /pictures/1
