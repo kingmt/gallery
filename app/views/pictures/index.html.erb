@@ -1,4 +1,14 @@
-<h1>Listing pictures in album: <%=h @album.name %></h1>
+
+<% if logged_in? && current_user.id == @album.user.id %>
+  <% form_for(@album) do |f| %>
+    <h1>Listing pictures in album: <%= f.text_field :name %>
+        <%= f.submit "Change Name" %>
+    </h1>
+    <%= f.error_messages %>
+  <% end %>
+<% else %>
+  <h1>Listing pictures in album: <%=h @album.name %></h1>
+<% end %>
 
 <table>
 <% for picture in @pictures %>
@@ -33,3 +43,5 @@
     </p>
   <% end %>
 <% end %>
+
+<%= link_to 'Back to Albums', albums_path %>
