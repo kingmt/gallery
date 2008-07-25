@@ -35,4 +35,8 @@ class Test::Unit::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+    # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead
+  # Then, you can remove it from this and the units test.
+  include AuthenticatedTestHelper
+
 end
